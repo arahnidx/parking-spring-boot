@@ -70,4 +70,17 @@ public class ParkingSpotController {
         parkingSpotService.delete(parkingSpotModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Parking Spot successfully deleted");
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "id") UUID id,
+                                                    @RequestBody @Valid ParkingSpotDto parkingSpotDto){
+        Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking spot not found.");
+        }
+        var parkingSpotModel = parkingSpotModelOptional.get();
+        parkingSpotModel.updateParkingSpot(parkingSpotModel, parkingSpotDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
+    }
 }

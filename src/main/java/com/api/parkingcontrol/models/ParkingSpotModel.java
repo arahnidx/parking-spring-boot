@@ -1,5 +1,7 @@
 package com.api.parkingcontrol.models;
 
+import com.api.parkingcontrol.dtos.ParkingSpotDto;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -33,6 +35,18 @@ public class ParkingSpotModel implements Serializable {
     private String apartment;
     @Column(nullable = false, length = 30)
     private String block;
+
+    public void updateParkingSpot(ParkingSpotModel parkingSpotModel, ParkingSpotDto parkingSpotDto) {
+        parkingSpotModel.setParkingSpotNumber(parkingSpotDto.getParkingSpotNumber());
+        parkingSpotModel.setLicensePlateCar(parkingSpotDto.getLicensePlateCar());
+        parkingSpotModel.setModelCar(parkingSpotDto.getModelCar());
+        parkingSpotModel.setBrandCar(parkingSpotDto.getBrandCar());
+        parkingSpotModel.setColorCar(parkingSpotDto.getColorCar());
+        parkingSpotModel.setResponsibleName(parkingSpotDto.getResponsibleName());
+        parkingSpotModel.setApartment(parkingSpotDto.getApartment());
+        parkingSpotModel.setBlock(parkingSpotDto.getBlock());
+
+    }
 
     public UUID getId() {
         return id;
