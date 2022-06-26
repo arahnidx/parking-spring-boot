@@ -28,7 +28,6 @@ public class ParkingSpotService {
         return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
     }
 
-    //bugado
     public boolean existsByApartmentAndBlock(String apartment, String block) {
         return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
