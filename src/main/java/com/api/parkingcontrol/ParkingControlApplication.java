@@ -19,11 +19,6 @@ public class ParkingControlApplication {
 	public String index(){
 		return "Hello World!";
 	}
-	@GetMapping("/sid")
-	public String index2(){
-		return "<h1>Hello sid!</h1>";
-	}
-
 
 
 }
